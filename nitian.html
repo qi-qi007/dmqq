@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>随机点名器</title>
+    <style>
+		#call {
+		            width: 600px;
+		            margin: 0 auto;
+		            text-align: center;
+		        }
+		
+		        /* 按钮样式 */
+		        #btn1,
+		        #btn2 {
+		            width: 120px;
+		            height: 40px;
+		            font-size: 16px;
+		            border: none;
+		            border-radius: 5px;
+		            background-color: lightgreen;
+		            color: white;
+		            cursor: pointer;
+		            margin: 10px 10px;
+		        }
+		
+		        /* 点名信息提示样式 */
+		       .info {
+		            font-size: 16px;
+		            margin: 10px 0;
+		        }
+		
+		        /* 点名结果显示区域样式 */
+		       .screen {
+		            position: relative;
+		            width: 120px;
+		            height: 60px;
+		            border: 2px solid #ccc;
+		            border-radius: 5px;
+		            margin: 0 auto;
+		            font-size: 24px;
+		            line-height: 60px;
+		        }
+		
+		        /* 号码列表样式 */
+		        ul {
+		            list-style-type: none;
+		            padding: 0;
+		            width: 550px;
+		            margin: 20px auto;
+		            text-align: center;
+		        }
+		
+		        ul li {
+		            width: 60px;
+		            height: 40px;
+		            line-height: 40px;
+		            text-align: center;
+		            border: 2px dashed #cc6666;
+		            border-radius: 50%;
+		            font-size: 14px;
+		            display: inline-block;
+		            margin: 5px;
+		        }
+		
+		        li.pitch {
+		            background-color: #ccccff;
+		            color: #003399;
+		            font-weight: bold;
+		        }
+	</style>
+</head>
+
+<body>
+    <div id="call">
+        <button id="btn1">开始点名</button>
+        <button id="btn2">停止点名</button>
+        <p class="info">请看屏幕！</p>
+        <div class="screen">
+            <span class="name"></span>
+        </div>
+        <ul>
+            <li>卜家豪</li>
+            <li>陈亚欣</li>
+            <li>丁晓萱</li>
+            <li>董恩浩</li>
+            <li>段鹏松</li>
+            <li>房芮禾</li>
+            <li>高俊腾</li>
+            <li>高鹿桐</li>
+            <li>谷天乐</li>
+            <li>何沛洋</li>
+            <li>贾旭</li>
+            <li>靳思同</li>
+            <li>李凤豪</li>
+            <li>李嘉兴</li>
+            <li>李建宇</li>
+            <li>李万琪</li>
+            <li>李欣宇</li>
+            <li>李业勤</li>
+            <li>刘百刚</li>
+            <li>刘冰倩</li>
+            <li>刘俊泽</li>
+            <li>刘一翔</li>
+            <li>刘宇倩</li>
+            <li>刘志龙</li>
+            <li>毛诚一</li>
+            <li>邵尚薇</li>
+            <li>孙健玮</li>
+            <li>王宪斌</li>
+            <li>王政皓</li>
+            <li>王志甲</li>
+			<li>王子林</li>
+			<li>吴梦瑶</li>
+			<li>邢嘉旺</li>
+			<li>徐佳慧</li>
+			<li>许珈玮</li>
+			<li>张连祥</li>
+			<li>张淑恒</li>
+			<li>张韵</li>
+			<li>张照毅</li>
+			<li>张智</li>
+			<li>张璐璐</li>
+			<li>赵含蕊</li>
+			<li>赵正阳</li>
+			<li>赵珈艺</li>
+			<li class="pitch">祝祥和</li>
+        </ul>
+    </div>
+    <script>
+		var call = document.getElementById("call");
+		var start = document.getElementById("btn1");
+		var stop = document.getElementById("btn2");
+		var li = document.getElementsByTagName("li");
+		var timer = null;
+		start.onclick = function () {
+		    clearInterval(timer);
+		    timer = setInterval(function () {
+		        let i = Math.floor(Math.random() * li.length);
+		        for (let j = 0; j < li.length; j++) {
+		            li[j].removeAttribute("class");
+		        }
+		        li[i].className = "pitch";
+		    }, 300);
+		};
+		stop.onclick = function () {
+		    clearInterval(timer);
+		    var choose = document.getElementsByClassName("pitch")[0];
+		    var name = choose.innerText;
+		    var nameSpan = document.getElementsByClassName("name")[0];
+		    nameSpan.innerText = name;
+		}
+	</script>
+</body>
+
+</html>
